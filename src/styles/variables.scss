@@ -1,0 +1,47 @@
+// Colors
+
+$black: #000;
+$gray-cod: #1e1e1e;
+$gray-dark: #121212;
+$white: #fff;
+$white-squeeze: #f6f9fc;
+
+// Vuetify variables
+
+$body-font-family: 'Nunito', sans-serif;
+$shadow-key-umbra-opacity: rgba($black, 0.1);
+$shadow-key-penumbra-opacity: rgba($black, 0.06);
+$shadow-key-ambient-opacity: rgba($black, 0.06);
+$shadow-key-umbra: (
+  2: (
+    0 1px 3px 0 $shadow-key-umbra-opacity,
+  ),
+);
+$shadow-key-penumbra: (
+  2: (
+    0 1px 2px 0 $shadow-key-penumbra-opacity,
+  ),
+);
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 768px,
+  'md': 1024px,
+  'lg': 1280px,
+  'xl': 1920px,
+);
+$btn-sizes: (
+  'x-small': 32,
+  'small': 36,
+  'default': 40,
+  'large': 44,
+  'x-large': 48,
+);
+$list-padding: 0;
+$material-light: (
+  'app-bar': $white,
+  'background': $white-squeeze,
+);
+$material-dark: (
+  'app-bar': $gray-cod,
+  'background': $gray-dark,
+);
