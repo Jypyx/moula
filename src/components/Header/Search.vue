@@ -61,16 +61,16 @@ export default {
     display: flex;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -0.75rem;
     bottom: 0;
-    left: 0;
+    left: -0.75rem;
     align-items: center;
     z-index: 1;
     background: map-get($material-light, 'app-bar');
-    padding: 0 0.25rem;
 
     @media (min-width: map-get($grid-breakpoints, 'sm')) {
-      padding: 0 0.75rem;
+      right: 0.75rem;
+      left: 0.75rem;
     }
 
     &.theme--dark {

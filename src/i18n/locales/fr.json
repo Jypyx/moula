@@ -1,5 +1,32 @@
 {
+  "header": {
+    "search": {
+      "tooltip": "Recherche",
+      "placeholder": "Saisir le nom d'un produit"
+    },
+    "theme": {
+      "tooltip": "Changer de thème"
+    },
+    "cart": {
+      "tooltip": "Panier"
+    }
+  },
   "home": {
-    "title": "Dépôt par défaut pour les projets Vue."
+    "categories": {
+      "title": "Nos catégories",
+      "cta": {
+        "more": "Voir toutes les catégories",
+        "less": "Voir moins"
+      }
+    },
+    "products": {
+      "title": "Nos produits",
+      "cta": {
+        "more": "Voir tous les produits"
+      }
+    }
+  },
+  "category": {
+    "title": "Catégorie : {category}"
   }
 }

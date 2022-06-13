@@ -48,8 +48,8 @@ const mutations = {
 
 const actions = {
   async getProducts({ commit }) {
-    const data = await getProductsApi()
-    commit(SET_PRODUCTS, data)
+    const { products } = await getProductsApi()
+    commit(SET_PRODUCTS, products)
   },
   async getCurrentProduct({ commit }, payload) {
     const data = await getSingleProductApi(payload)

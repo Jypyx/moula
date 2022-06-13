@@ -1,5 +1,32 @@
 {
+  "header": {
+    "search": {
+      "tooltip": "Search",
+      "placeholder": "Enter a product name"
+    },
+    "theme": {
+      "tooltip": "Change theme"
+    },
+    "cart": {
+      "tooltip": "Cart"
+    }
+  },
   "home": {
-    "title": "Default repository for Vue projects."
+    "categories": {
+      "title": "Our categories",
+      "cta": {
+        "more": "See all categories",
+        "less": "See less"
+      }
+    },
+    "products": {
+      "title": "Our products",
+      "cta": {
+        "more": "See all products"
+      }
+    }
+  },
+  "category": {
+    "title": "Category: {category}"
   }
 }

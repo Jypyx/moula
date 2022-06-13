@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint",
     "format": "prettier --ignore-path .gitignore --write **/*.{vue,js,json,css,scss,md,yml} && yarn lint:scss --fix",
     "lint:scss": "stylelint \"./src/**/*.{vue,scss}\" --ignore-path .gitignore",
-    "translations": "yarn vue-i18n-extract report -v ./src/**/*.{js,vue} -l ./src/i18n/languages/*.{js,json,yml,yaml} -d"
+    "translations": "yarn vue-i18n-extract report -v ./src/**/*.{js,vue} -l ./src/i18n/locales/*.{js,json,yml,yaml} -d"
   },
   "dependencies": {
     "@mdi/js": "^6.7.96",
