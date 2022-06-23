@@ -1,6 +1,6 @@
 <template>
   <v-card class="category-item" :to="{ name: 'Category', params: { category } }">
-    <v-img src="http://placeimg.com/640/480/tech" position="center center">
+    <v-img src="https://picsum.photos/640/480" position="center center">
       <div class="category-item__title">{{ category }}</div>
     </v-img>
   </v-card>
@@ -27,12 +27,12 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
+    background: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 100%) 100%);
     padding: 1rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 1) 100%);
-    color: $white;
-    font-weight: bold;
     text-transform: capitalize;
+    color: $white;
     font-size: 1.25rem;
+    font-weight: bold;
   }
 }
 </style>

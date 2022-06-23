@@ -4,14 +4,16 @@
       <AppLogo />
       <v-spacer />
       <HeaderLanguageSelector />
-      <HeaderSearch />
+      <HeaderSearch :query="$route.query.query" @search="searchProduct" />
       <HeaderTheme />
-      <HeaderCart />
+      <HeaderCart :cart="cart" />
     </v-container>
+    <v-progress-linear :active="loading" indeterminate absolute top color="primary"></v-progress-linear>
   </v-app-bar>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import AppLogo from '@/components/AppLogo.vue'
 import HeaderLanguageSelector from '@/components/Header/LanguageSelector.vue'
 import HeaderSearch from '@/components/Header/Search.vue'
@@ -25,6 +27,23 @@ export default {
     HeaderSearch,
     HeaderTheme,
     HeaderCart,
+  },
+  computed: {
+    ...mapState({
+      cart: state => state.products.cart,
+      loading: state => state.products.loading,
+    }),
+  },
+  methods: {
+    ...mapActions({
+      setSearch: 'products/setSearch',
+    }),
+    searchProduct(query) {
+      if (query !== this.$route.query.query) {
+        this.setSearch(query)
+        this.$router.push({ name: 'Search', query: { query } })
+      }
+    },
   },
 }
 </script>

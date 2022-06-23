@@ -11,7 +11,7 @@
       "tooltip": "Panier"
     }
   },
-  "home": {
+  "homeView": {
     "categories": {
       "title": "Nos catégories",
       "cta": {
@@ -26,7 +26,17 @@
       }
     }
   },
-  "category": {
-    "title": "Catégorie : {category}"
+  "categoryView": {
+    "title": "Catégorie : {category}",
+    "noData": "Aucun produit pour la catégorie sélectionnée."
+  },
+  "searchView": {
+    "title": "Résultats pour votre recherche \"{query}\"",
+    "noData": "Aucun produit ne correspond à votre recherche."
+  },
+  "product": {
+    "item": {
+      "addToCart": "Ajouter au panier"
+    }
   }
 }

@@ -11,6 +11,8 @@ const SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT'
 const SET_CATEGORIES = 'SET_CATEGORIES'
 const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY'
 const SET_SEARCH = 'SET_SEARCH'
+const SET_LOADING = 'SET_LOADING'
+const ADD_TO_CART = 'ADD_TO_CART'
 const RESET_STATE = 'RESET_STATE'
 
 const getDefaultState = () => {
@@ -19,7 +21,9 @@ const getDefaultState = () => {
     categories: [],
     currentProduct: null,
     currentCategory: null,
+    cart: [],
     search: '',
+    loading: false,
   }
 }
 
@@ -40,6 +44,12 @@ const mutations = {
   },
   [SET_SEARCH]: (state, search) => {
     state.search = search
+  },
+  [SET_LOADING]: (state, loading) => {
+    state.loading = loading
+  },
+  [ADD_TO_CART]: (state, product) => {
+    state.cart.push(product)
   },
   [RESET_STATE]: state => {
     Object.assign(state, getDefaultState())
@@ -63,10 +73,18 @@ const actions = {
     const data = await getSingleCategoryApi(payload)
     commit(SET_CURRENT_CATEGORY, data)
   },
-  async setSearch({ commit }, payload) {
-    const data = await getSearchProductApi(payload)
+  async searchProduct({ commit }, payload) {
+    const { products } = await getSearchProductApi(payload)
+    commit(SET_PRODUCTS, products)
+  },
+  setSearch({ commit }, payload) {
     commit(SET_SEARCH, payload)
-    commit(SET_PRODUCTS, data)
+  },
+  setLoading({ commit }, payload) {
+    commit(SET_LOADING, payload)
+  },
+  addProductToCart({ commit }, payload) {
+    commit(ADD_TO_CART, payload)
   },
   resetState({ commit }) {
     commit(RESET_STATE)

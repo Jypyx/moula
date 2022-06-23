@@ -14,6 +14,21 @@ const routes = [
     name: 'Category',
     component: () => import('@/views/CategoryView.vue'),
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('@/views/SearchView.vue'),
+  },
+  {
+    path: '/list',
+    name: 'List',
+    component: () => import('@/views/ListView.vue'),
+  },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: () => import('@/views/ListView.vue'),
+  },
 ]
 
 const router = new VueRouter({

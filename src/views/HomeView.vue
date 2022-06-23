@@ -1,30 +1,35 @@
 <template>
-  <div class="home">
-    <v-container class="home__container">
-      <section class="home__container__section">
-        <UiTitle :title="$t('home.categories.title')" />
-        <div class="home__container__section__list">
+  <div class="home-view">
+    <v-container class="home-view__container">
+      <section class="home-view__container__section">
+        <UiTitle :title="$t('homeView.categories.title')" />
+        <div class="home-view__container__section__list">
           <v-lazy v-for="category in computedCategories" :key="category" min-height="100" transition="fade-transition">
             <CategoryItem :category="category" />
           </v-lazy>
         </div>
-        <div class="home__container__section__actions">
+        <div class="home-view__container__section__actions">
           <v-btn v-if="categoryListLimit > 0" rounded color="primary" outlined @click="categoryListLimit = -1">
-            {{ $t('home.categories.cta.more') }}
+            {{ $t('homeView.categories.cta.more') }}
           </v-btn>
           <v-btn v-else rounded color="primary" outlined @click="categoryListLimit = 6">
-            {{ $t('home.categories.cta.less') }}
+            {{ $t('homeView.categories.cta.less') }}
           </v-btn>
         </div>
       </section>
-      <section class="home__container__section">
-        <UiTitle :title="$t('home.products.title')" />
-        <div class="home__container__section__list">
-          <ProductItem v-for="product in computedProducts" :key="product.id" :product="product" />
+      <section class="home-view__container__section">
+        <UiTitle :title="$t('homeView.products.title')" />
+        <div class="home-view__container__section__list">
+          <ProductItemCard
+            v-for="product in computedProducts"
+            :key="product.id"
+            :product="product"
+            @addToCart="addToCart"
+          />
         </div>
-        <div class="home__container__section__actions">
+        <div class="home-view__container__section__actions">
           <v-btn rounded color="primary" outlined>
-            {{ $t('home.products.cta.more') }}
+            {{ $t('homeView.products.cta.more') }}
           </v-btn>
         </div>
       </section>
@@ -37,14 +42,14 @@ import { mapActions, mapState } from 'vuex'
 
 import UiTitle from '@/components/UI/Title.vue'
 import CategoryItem from '@/components/Category/Item.vue'
-import ProductItem from '@/components/Product/Item.vue'
+import ProductItemCard from '@/components/Product/ItemCard.vue'
 
 export default {
   name: 'HomeView',
   components: {
     UiTitle,
     CategoryItem,
-    ProductItem,
+    ProductItemCard,
   },
   data: () => ({
     categoryListLimit: 6,
@@ -75,13 +80,17 @@ export default {
     ...mapActions({
       getCategories: 'products/getCategories',
       getProducts: 'products/getProducts',
+      addProductToCart: 'products/addProductToCart',
     }),
+    addToCart(product) {
+      this.addProductToCart(product)
+    },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.home {
+.home-view {
   &__container {
     &__section {
       margin-top: 2rem;
@@ -105,9 +114,9 @@ export default {
       }
 
       &__actions {
-        margin-top: 1.5rem;
         display: flex;
         justify-content: center;
+        margin-top: 1.5rem;
       }
     }
   }

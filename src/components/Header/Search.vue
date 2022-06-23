@@ -9,13 +9,15 @@
       {{ $t('header.search.tooltip') }}
     </v-tooltip>
     <v-slide-y-transition>
-      <div
+      <form
         class="header-search__container"
         :class="{ 'theme--dark': $vuetify.theme.dark }"
         v-if="isVisible"
         v-click-outside="toggleSearch"
+        @submit.prevent="searchProduct"
       >
         <v-text-field
+          v-model="search"
           :placeholder="$t('header.search.placeholder')"
           solo
           flat
@@ -29,7 +31,7 @@
         <v-btn icon @click="toggleSearch">
           <v-icon>{{ icons.mdiClose }}</v-icon>
         </v-btn>
-      </div>
+      </form>
     </v-slide-y-transition>
   </div>
 </template>
@@ -39,6 +41,13 @@ import { mdiMagnify, mdiClose, mdiBackspaceOutline } from '@mdi/js'
 
 export default {
   name: 'HeaderSearch',
+  props: {
+    query: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
   data: () => ({
     isVisible: false,
     icons: {
@@ -46,10 +55,20 @@ export default {
       mdiClose,
       mdiBackspaceOutline,
     },
+    search: '',
   }),
+  watch: {
+    query() {
+      this.search = this.query
+    },
+  },
   methods: {
     toggleSearch() {
       this.isVisible = !this.isVisible
+    },
+    searchProduct() {
+      this.$emit('search', this.search)
+      this.toggleSearch()
     },
   },
 }
